@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+
+metadata:
+  name: apps-talk
+
+spec:
+  template:
+    metadata:
+      labels:
+        app: apps-talk
+    spec:
+      containers:
+      - name: apps-talk
+        image: "apps-talk:2"
+        command:
+          - "npm"
+        args: ["run", "prod"]
+        ports:
+          - containerPort: 3050
+            name: apps-talk-port
+            protocol: TCP
